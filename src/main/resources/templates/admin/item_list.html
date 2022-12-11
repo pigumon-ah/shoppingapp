@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>テスト</title>
+</head>
+<body>
+<h1 class="mt-3">ユーザー一覧</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>商品番号</th>
+    <th>商品名</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${itemList}">
+    <th th:text="${item.item_cd}">(username)</th>
+    <td th:text="${item.item_nm}">(authority)</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

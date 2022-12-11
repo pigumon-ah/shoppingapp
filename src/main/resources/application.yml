@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoppingdb
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Haruki0604
+
+server:
+  port: 8080

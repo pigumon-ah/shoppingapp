@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>テスト</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <header style="background-color:#add8e6;">&nbsp;</header>
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-md-12 text-center text-primary"><p>【　ECサイト管理メニュー　】</p></div>
+          </div>
+          <div class="row mt-3" style="background-color:#add8e6;">
+            <div class="col-md-12">
+              <div class="row mt-3">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-lg btn-success w-100 h-100" onClick="location.href='test4.html'">注文管理</button>
+                </div>
+                <div class="col-md-1 text-center d-flex align-items-center justify-content-center">…</div>
+                <div class="col-md-5">
+                  注文の履歴を一覧表示します。注文担当者は、注文履歴から注文
+                  請けの確定を行ってください。また、注文詳細の確認・注文内容の
+                  編集も行えます。
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-lg btn-success w-100 h-100" onClick="location.href='test5.html'">出荷管理</button>
+                </div>
+                <div class="col-md-1 text-center d-flex align-items-center justify-content-center">…</div>
+                <div class="col-md-5">
+                  出荷の履歴を一覧表示します。出荷担当者は、出荷一覧を確認して
+                  商品の出荷を行ってください。また、出荷詳細の確認・出荷内容の
+                  編集も行えます。
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-3">
+                  <button type="button" class="btn btn-lg btn-success w-100 h-100" onClick="location.href='test6.html'">商品管理</button>
+                </div>
+                <div class="col-md-1 text-center d-flex align-items-center justify-content-center">…</div>
+                <div class="col-md-5">
+                  登録されている商品の一覧表示します。入荷担当者は、商品一覧から
+                  入荷量の入力を行ってください。また、新規商品の登録・商品内容の
+                  編集も行えます。
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+              </div>
+              <div class="row mt-3 mb-3">
+                <div class="col-md-2">&nbsp;</div>
+                <div class="col-md-3">
+					<a href="#" class="btn btn-lg btn-success w-100 h-100" th:href=@{/admin/user_list}>ユーザ管理</a>
+
+                </div>
+                <div class="col-md-1 text-center d-flex align-items-center justify-content-center">…</div>
+                <div class="col-md-5">
+                  登録されている社員の一覧を表示します。システム管理者は、新入
+                  社員が入社した場合、ユーザ登録を行ってください。また、社員の
+                  登録内容の編集も行えます。
+                </div>
+                <div class="col-md-1">&nbsp;</div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12 text-center text-primary"><a href="test3.html">&nbsp;☞ ECサイトへアクセス&nbsp;</a></div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-lg btn-secondary w-100 h-100 d-flex align-items-center justify-content-center">
+
+                </svg>&nbsp;山田太郎
+              </button>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+            <div class="col-md-3">
+              <button type="button" class="btn btn-lg btn-danger w-100 h-100 d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#passChangeModal">
+              パスワード変更
+              </button>
+            </div>
+            <div class="col-md-3">
+              <a href="/admin/logout" class="btn btn-lg btn-secondary w-100 h-100 d-flex align-items-center justify-content-center">
+              ログアウト
+              </a>
+            </div>
+            <div class="col-md-1">&nbsp;</div>
+          </div>
+
+        </div>
+        <footer class="text-center mt-5" style="background-color:#add8e6;">Copyright ©2022 専門学校九州テクノカレッジ All Rights Reserved.</footer>
+<!-- Modal -->
+<div class="modal fade" id="passChangeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:#ffffe0;">
+        <h5 class="modal-title text-danger" id="exampleModalLabel">【パスワード変更】</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row mt-1">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-5">
+            <label class="input-group-text bg-primary text-white">変更するユーザ：</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="">
+          </div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-5">
+            <label class="input-group-text bg-primary text-white">【旧】パスワード：</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="">
+          </div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+        <div class="row mt-1">
+          <div class="col-md-1">&nbsp;</div>
+          <div class="col-md-5">
+            <label class="input-group-text bg-danger text-white">【新】パスワード：</label>
+          </div>
+          <div class="col-md-5">
+            <input type="text" class="form-control" placeholder="">
+          </div>
+          <div class="col-md-1">&nbsp;</div>
+        </div>
+      </div>
+      <div class="modal-footer" style="background-color:#ffffe0;">
+        <button type="button" class="btn btn-danger"data-bs-dismiss="modal">確&nbsp;&nbsp;定</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </body>
+</html>
