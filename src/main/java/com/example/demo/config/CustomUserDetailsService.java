@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+
 import java.util.Collections;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.repsitry.StaffRepositorydao;
+import com.example.demo.service.StaffService;
 
 import lombok.AllArgsConstructor;
 
@@ -15,15 +16,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final StaffRepositorydao staffrepository;
+    private final StaffService staffservice;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    	        return staffrepository.findById(username)
+    	        return staffservice.findById(username)
                 .map(
                         user -> new CustomUserDetails(
-                                user.getStaff_nm(),
-                                user.getStaff_pw(),
+                                user.getStaffNm(),
+                                user.getStaffPw(),
                                 Collections.emptyList()
                         )
                 )

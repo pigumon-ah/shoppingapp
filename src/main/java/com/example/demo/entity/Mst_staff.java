@@ -12,48 +12,48 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="mst_staff")
+@Table(name="MstStaff")
 @Data
 public class Mst_staff{
 
 	@Id
-	@Column(name="staff_cd", nullable=false)
+	@Column(name="staffCd", nullable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String staff_cd;
+	private String staffCd;
 
-	@Column(name="staff_pw", nullable=false)
-	private String staff_pw;
+	@Column(name="staffPw", nullable=false)
+	private String staffPw;
 
-	@Column(name="staff_nm")
-	private String staff_nm;
+	@Column(name="staffNm")
+	private String staffNm;
 
-	@Column(name="staff_kn")
-	private String staff_kn;
+	@Column(name="staffKn")
+	private String staffKn;
 
-	@Column(name="staff_post_cd")
-	private String staff_post_cd;
+	@Column(name="staffPostCd")
+	private String staffPostCd;
 
-	@Column(name="staff_address")
-	private String staff_address;
+	@Column(name="staffAddress")
+	private String staffAddress;
 
-	@Column(name="staff_tel")
-	private String staff_tel;
+	@Column(name="staffTel")
+	private String staffTel;
 
-	@Column(name="staff_email")
-	private String staff_email;
+	@Column(name="staffEmail")
+	private String staffEmail;
 
-	@Column(name="use_flg", nullable=false)
-	private String use_flg;
+	@Column(name="useFlg", nullable=false)
+	private String useFlg;
 
-	@Column(name="create_date")
-	private LocalDateTime create_date;
+	@Column(name="createDate")
+	private LocalDateTime createDate;
 
-	@Column(name="create_staff")
-	private String create_staff;
+	@Column(name="createStaff")
+	private String createStaff;
 
-	@Column(name="modify_date")
-	private LocalDateTime modify_date;
+	@Column(name="modifyDate")
+	private LocalDateTime modifydate;
 
-	@Column(name="modify_staff")
-	private String modify_staff;
+	@Column(name="modifyStaff")
+	private String modifystaff;
 }

@@ -5,11 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Mst_staff;
-import com.example.demo.repsitry.StaffRepositorydao;
+import com.example.demo.service.StaffService;
 
 import lombok.AllArgsConstructor;
 
@@ -18,7 +20,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class AdminController {
 
-	private final StaffRepositorydao staffrepository;
+	private final StaffService staffservice;
 
 
 //ログイン画面 Controller
@@ -44,21 +46,25 @@ public class AdminController {
 	@GetMapping("user_list")
 	public String user_list(Model model) {
 		// selectしてIDの昇順に。
-		List<Mst_staff> userlist = staffrepository.findAll();
+		List<Mst_staff> userlist = staffservice.findAll();
 		model.addAttribute("userList", userlist);
 		return "admin/user_list";
 	}
 
 	@GetMapping("user_seach")
-	public String user_seach() {
+	public String user_seach(@RequestParam("staffNm")String staffNm, Model model) {
 		//クエリパラメータの検索ワードを元にselectしてリストに入れる
+		List<Mst_staff> userlist = staffservice.findBystaffNm(staffNm);
+		model.addAttribute("userList",userlist);
 		return "admin/user_list";
 	}
 
-	@GetMapping("user_edit")
-	public String user_edit() {
-		//クエリパラメータのstaffidを取得し、
+	@GetMapping("user_edit/{staffCd}")
+	public String user_edit(@PathVariable("staffCd")String staffCd, Model model) {
+		//クエリパラメータのstaffCdを取得し、
 		// staffの情報をhtmlフォームに渡す
+		Mst_staff user =staffservice.findBystaffCd(staffCd);
+		model.addAttribute("user", user);
 		return "admin/user_edit";
 
 	}
