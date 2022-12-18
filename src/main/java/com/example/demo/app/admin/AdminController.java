@@ -4,12 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.app.validation.UserForm;
 import com.example.demo.entity.Mst_staff;
 import com.example.demo.service.StaffService;
 
@@ -48,7 +51,7 @@ public class AdminController {
 		// selectしてIDの昇順に。
 		List<Mst_staff> userlist = staffservice.findAll();
 		model.addAttribute("userList", userlist);
-		return "admin/user_list";
+		return "admin/user/list";
 	}
 
 	@GetMapping("user_seach")
@@ -56,7 +59,7 @@ public class AdminController {
 		//クエリパラメータの検索ワードを元にselectしてリストに入れる
 		List<Mst_staff> userlist = staffservice.findBystaffNm(staffNm);
 		model.addAttribute("userList",userlist);
-		return "admin/user_list";
+		return "admin/user/list";
 	}
 
 	@GetMapping("user_edit/{staffCd}")
@@ -65,27 +68,53 @@ public class AdminController {
 		// staffの情報をhtmlフォームに渡す
 		Mst_staff user =staffservice.findBystaffCd(staffCd);
 		model.addAttribute("user", user);
-		return "admin/user_edit";
+		return "admin/user/edit";
 
 	}
 
+	@GetMapping("user_form")
+	public String user_create(UserForm userForm) {
+		return "admin/user/create";
+	}
+
+	@PostMapping("user_form")
+	public String backuser_create( UserForm userform) {
+		return "admin/user/create";
+	}
+
+	@PostMapping("user_confirm")
+	public String user_confirm(@Validated UserForm userform ,BindingResult result) {
+		if(result.hasErrors()) {
+			return "admin/user/create";
+		}
+		return "admin/user/confirm";
+	}
 	@PostMapping("user_insert")
-	public String user_insert() {
+	public String user_insert(@Validated UserForm userform,BindingResult result) {
 		//formで受け取ったユーザ情報を元にinsert
-		return "redirect:/admin/user_list";
+		if(result.hasErrors()) {
+			return "admin/user/create";
+		}
+		Mst_staff staff = new Mst_staff();
+		staff.setStaffCd(userform.getCode());
+		staffservice.insertStaff(staff);
+//		redirectAttributes.addFlashAttribute("complete","登録完了");
+		return "redirect:/admin/user/list";
 	}
 
 	@PostMapping("user_update")
 	public String user_update() {
 		//formで受け取った値で更新を行う
-		return "redirect:/admin/user_list";
+
+		return "redirect:/admin/user/list";
 	}
 
 	@GetMapping("user_delete")
 	public String user_delete() {
 		//クエリパラメータからstaffIDを取得、delete文を実行
-		return "redirect:/admin/user_list";
+		return "redirect:/admin/user/list";
 	}
+
 //------------------------------------------------------
 
 	//商品管理画面Controller  item_**

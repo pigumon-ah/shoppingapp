@@ -32,4 +32,8 @@ public class StaffService {
 		return staffrepository.findBystaffCd(staffCd);
 	}
 
+	public void insertStaff(Mst_staff staff) {
+		staffrepository.save(staff);
+	}
+
 }

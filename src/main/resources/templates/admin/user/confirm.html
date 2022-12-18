@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1 >確認画面</h1>
+<div class="container text-center my-3">
+	<h2>入力内容をご確認ください</h2>
+</div>
+<div th:object = "${userForm}">
+<ul >
+  <li th:text="'社員コード:'+*{code}">name</li>
+  <li th:text="'パスワード:'+*{password}">password</li>
+  <li th:text="'漢字ユーザー名:'+*{name}">name</li>
+  <li th:text="'カナユーザー名:'+*{kname}">kname</li>
+  <li th:text="'郵便番号:'+*{postcd}">postcd</li>
+  <li th:text="'住所:'+*{address}">address</li>
+  <li th:text="'電話番号:'+*{tel}">tel</li>
+  <li th:text="'メールアドレス:'+*{email}">email</li>
+</ul>
+<div class="container text-center">
+	<div class="my-3">
+	<form method="post" action="#" th:action="@{/admin/user_form}">
+		<input type="hidden" name="code" th:value="*{code}">
+		<input type="hidden" name="password" th:value="*{password}">
+		<input type="hidden" name="name" th:value="*{name}">
+		<input type="hidden" name="kname" th:value="*{kname}">
+		<input type="hidden" name="postcd" th:value="*{postcd}">
+		<input type="hidden" name="address" th:value="*{address}">
+		<input type="hidden" name="tel" th:value="*{tel}">
+		<input type="hidden" name="email" th:value="*{email}">
+		<input type="submit" value="戻る">
+	</form>
+	</div>
+	<div class="my-3">
+	<form method="post" action="#" th:action="@{/admin/user_insert}">
+		<input type="hidden" name="code" th:value="*{code}">
+		<input type="hidden" name="password" th:value="*{password}">
+		<input type="hidden" name="name" th:value="*{name}">
+		<input type="hidden" name="kname" th:value="*{kname}">
+		<input type="hidden" name="postcd" th:value="*{postcd}">
+		<input type="hidden" name="address" th:value="*{address}">
+		<input type="hidden" name="tel" th:value="*{tel}">
+		<input type="hidden" name="email" th:value="*{email}">
+		<input type="submit" value="ユーザ作成する">
+	</form>
+	</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー登録</title>
+</head>
+<body>
+<h1 class="mt-3">ユーザー登録</h1>
+
+<form  method="POST" action="#" th:action=@{/admin/user_confirm} th:object =${userForm}>
+	<label for="code">社員コード</label>
+    <input id="code" name="code" type="text" th:value="*{code}">
+    <div th:if="${#fields.hasErrors('code')}" th:errors="*{code}"></div>
+	<br/>
+	<label for="password">パスワード</label>
+	<input id="password" name="password" type="text" th:value="*{password}">
+	    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+	<br/>
+	<label for="name">漢字ユーザー名</label>
+	<input id="name" name="name" type="text" th:value="*{name}">
+	    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+	<br/>
+		<label for="kname">カタカナユーザ名</label>
+	<input id="kname" name="kname" type="text" th:value="*{kname}">
+	    <div th:if="${#fields.hasErrors('kname')}" th:errors="*{kname}"></div>
+	<br/>
+		<label for="postcd">郵便番号</label>
+	<input id="postcd" name="postcd" type="text" th:value="*{postcd}">
+	    <div th:if="${#fields.hasErrors('postcd')}" th:errors="*{postcd}"></div>
+	<br/>
+		<label for="address">住所</label>
+	<input id="address" name="address" type="text" th:value="*{address}">	    <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></div>
+	<br/>
+		<label for="tel">電話番号</label>
+	<input id="tel" name="tel" type="text" th:value="*{tel}">
+	    <div th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></div>
+	<br/>
+		<label for="email">メールアドレス</label>
+	<input id="email" name="email" type="text" th:value="*{email}">
+	    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+	<br/>
+	<button class="mt-4" type="submit">作成する</button>
+</form>
+<div class="mt-3"><a href="#" th:href=@{/admin/user_list}>ユーザー一覧に戻る</a></div>
+</body>
+</html>

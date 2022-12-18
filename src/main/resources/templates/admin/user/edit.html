@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ユーザー編集</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+<h1 class="mt-3">ユーザー編集</h1>
+
+<form th:action=@{/admin/insert} method="POST" th:object="${user}">
+	<label for="staffCd">社員コード</label>
+	<input id="staffCd" name="staffCd" type="text" th:value="*{staffCd}">
+	<br/>
+	<label for="staffPw">パスワード</label>
+	<input id="staffPw" name="staffPw" type="text">
+	<br/>
+	<label for="staffNm">漢字ユーザー名</label>
+	<input id="staffNm" name="staffNm" type="text" th:value="*{staffNm}">
+	<br/>
+		<label for="staffKn">カタカナユーザ名</label>
+	<input id="staffKn" name="staffKn" type="text" th:value="*{staffKn}">
+	<br/>
+		<label for="staffPostCd">郵便番号</label>
+	<input id="staffPostCd" name="staffPostCd" type="text" th:value="*{staffPostCd}">
+	<br/>
+		<label for="staffAddress">住所</label>
+	<input id="staffAddress" name="staffAddress" type="text" th:value="*{staffAddress}">
+	<br/>
+		<label for="staffTel">電話番号</label>
+	<input id="staffTel" name="staffTel" type="text" th:value="*{staffTel}">
+	<br/>
+		<label for="staffEmail">メールアドレス</label>
+	<input id="staffEmail" name="staffEmail" type="text" th:value="*{staffEmail}">
+	<br/>
+	<button class="mt-4" type="submit">更新する</button>
+
+</form>
+<div class="mt-3"><a href="#" th:href=@{/admin/user_list}>ユーザー一覧に戻る</a></div>
+</body>
+</html>
